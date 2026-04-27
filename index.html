@@ -714,7 +714,36 @@
       }
     }
 
-</style>
+
+    /* ================================
+       CARTEL DE MENSAJE ENVIADO
+    ================================= */
+    .sent-toast {
+      position: fixed;
+      left: 50%;
+      top: 22px;
+      transform: translateX(-50%);
+      z-index: 10000;
+      display: none;
+      width: min(calc(100% - 28px), 520px);
+      padding: 14px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(244, 123, 32, 0.38);
+      background: linear-gradient(135deg, rgba(7, 26, 51, 0.96), rgba(5, 11, 18, 0.98));
+      color: #ffd5ad;
+      font-family: "Rajdhani", "Inter", sans-serif;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-align: center;
+      box-shadow: 0 18px 44px rgba(0,0,0,0.42), 0 0 24px rgba(244,123,32,0.18);
+    }
+
+    .sent-toast.is-visible {
+      display: block;
+    }
+
+  </style>
 </head>
 
 <body>
@@ -852,8 +881,8 @@
         <input type="hidden" name="_subject" value="New message from Pro Solutions website">
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_template" value="table">
-
-        <input name="name" type="text" placeholder="Full name" data-placeholder-en="Full name" data-placeholder-es="Nombre completo" required>
+        <input type="hidden" name="_next" id="formNextUrl" value="">
+<input name="name" type="text" placeholder="Full name" data-placeholder-en="Full name" data-placeholder-es="Nombre completo" required>
         <input name="email" type="email" placeholder="Email address" data-placeholder-en="Email address" data-placeholder-es="Correo electrónico" required>
         <textarea name="message" placeholder="Message" data-placeholder-en="Message" data-placeholder-es="Mensaje" required></textarea>
 
@@ -1055,6 +1084,60 @@
           if (event.key === "Escape" && modal && modal.classList.contains("is-open")) {
             window.closeContactForm();
           }
+        });
+      });
+    })();
+  </script>
+
+
+  <div class="sent-toast" id="sentToast" data-i18n="sentToast">Message sent successfully</div>
+
+
+  <script id="prosolutions-form-return">
+    (function () {
+      function buildReturnUrl() {
+        const url = new URL(window.location.href);
+        url.searchParams.set("mensaje", "enviado");
+        url.hash = "";
+        return url.toString();
+      }
+
+      function setDynamicReturnUrl() {
+        document.querySelectorAll('input[name="_next"]').forEach(function (input) {
+          input.value = buildReturnUrl();
+        });
+      }
+
+      function showSentToastIfNeeded() {
+        const params = new URLSearchParams(window.location.search);
+        if (params.get("mensaje") !== "enviado") return;
+
+        const savedLang = localStorage.getItem("prosolutions_lang") || "en";
+        if (typeof window.setProSolutionsLanguage === "function") {
+          window.setProSolutionsLanguage(savedLang);
+        }
+
+        const toast = document.getElementById("sentToast");
+        if (toast) {
+          toast.classList.add("is-visible");
+          setTimeout(function () {
+            toast.classList.remove("is-visible");
+          }, 4500);
+        }
+
+        const cleanUrl = new URL(window.location.href);
+        cleanUrl.searchParams.delete("mensaje");
+        window.history.replaceState({}, document.title, cleanUrl.pathname + cleanUrl.search + cleanUrl.hash);
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        setDynamicReturnUrl();
+        showSentToastIfNeeded();
+
+        document.querySelectorAll("form.contact-form").forEach(function (form) {
+          form.addEventListener("submit", function () {
+            setDynamicReturnUrl();
+          });
         });
       });
     })();
