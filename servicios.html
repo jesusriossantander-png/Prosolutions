@@ -637,7 +637,7 @@
         </div>
 
         <div class="cta">
-          <a class="btn btn-primary" href="#" id="openContactModal" data-i18n="contact">Contact</a>
+          <a class="btn btn-primary" href="#" onclick="openContactForm(event)" data-i18n="contact">Contact</a>
           <a class="btn btn-secondary" href="index.html" data-i18n="home">Home</a>
         </div>
       </section>
@@ -645,7 +645,7 @@
 
     <footer class="footer">
       <span data-i18n="footerText">Pro Solutions Industrial © 2026</span>
-      <a href="#" id="openContactModal">info@prosolutions.com.ar</a>
+      <a href="#" onclick="openContactForm(event)">info@prosolutions.com.ar</a>
     </footer>
   </div>
 
@@ -734,7 +734,7 @@
   <!-- Modal de contacto -->
   <div class="contact-modal" id="contactModal" aria-hidden="true">
     <div class="contact-box" role="dialog" aria-modal="true" aria-labelledby="contactTitle">
-      <button class="contact-close" id="closeContactModal" type="button" aria-label="Close contact form">×</button>
+      <button class="contact-close" onclick="closeContactForm()" type="button" aria-label="Close contact form">×</button>
 
       <h2 class="contact-title" id="contactTitle" data-i18n="contactModalTitle">Contact</h2>
       <div class="contact-line"></div>
@@ -757,6 +757,53 @@
     </div>
   </div>
 
+
+
+  <script>
+    function updateContactPlaceholders(lang) {
+      document.querySelectorAll("[data-placeholder-en]").forEach(function(element) {
+        var value = element.getAttribute("data-placeholder-" + lang);
+        if (value) element.setAttribute("placeholder", value);
+      });
+    }
+
+    function openContactForm(event) {
+      if (event) event.preventDefault();
+      var modal = document.getElementById("contactModal");
+      if (!modal) return false;
+      modal.classList.add("is-open");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+      var savedLang = localStorage.getItem("prosolutions_lang") || document.documentElement.lang || "en";
+      updateContactPlaceholders(savedLang);
+      return false;
+    }
+
+    function closeContactForm() {
+      var modal = document.getElementById("contactModal");
+      if (!modal) return;
+      modal.classList.remove("is-open");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+
+    document.addEventListener("click", function(event) {
+      var modal = document.getElementById("contactModal");
+      if (modal && event.target === modal) closeContactForm();
+    });
+
+    document.addEventListener("keydown", function(event) {
+      var modal = document.getElementById("contactModal");
+      if (event.key === "Escape" && modal && modal.classList.contains("is-open")) {
+        closeContactForm();
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+      var savedLang = localStorage.getItem("prosolutions_lang") || "en";
+      updateContactPlaceholders(savedLang);
+    });
+  </script>
 
 </body>
 </html>
