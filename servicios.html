@@ -415,6 +415,160 @@
         padding-bottom: 22px;
       }
     }
+  /* ================================
+       MODAL DE CONTACTO
+    ================================= */
+    .contact-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 22px;
+      background: rgba(3, 7, 12, 0.78);
+      backdrop-filter: blur(12px);
+    }
+
+    .contact-modal.is-open {
+      display: flex;
+    }
+
+    .contact-box {
+      position: relative;
+      width: min(100%, 780px);
+      border-radius: 34px;
+      border: 1px solid rgba(27, 117, 187, 0.42);
+      background:
+        radial-gradient(circle at 50% 100%, rgba(27, 117, 187, 0.24), transparent 45%),
+        linear-gradient(145deg, rgba(12, 29, 46, 0.96), rgba(7, 18, 31, 0.98));
+      box-shadow:
+        0 32px 90px rgba(0, 0, 0, 0.7),
+        0 0 32px rgba(27, 117, 187, 0.18),
+        inset 0 1px 0 rgba(255,255,255,0.08);
+      padding: clamp(24px, 5vw, 46px);
+    }
+
+    .contact-title {
+      font-family: "Rajdhani", "Inter", sans-serif;
+      font-size: clamp(2.4rem, 7vw, 4.8rem);
+      line-height: 0.95;
+      text-align: center;
+      color: #9fd2ff;
+      letter-spacing: 0.04em;
+      margin-bottom: 10px;
+      text-shadow: 0 0 18px rgba(76, 168, 255, 0.45);
+    }
+
+    .contact-line {
+      width: 170px;
+      height: 4px;
+      margin: 0 auto 34px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, transparent, #4aaeff, transparent);
+      box-shadow: 0 0 16px rgba(74, 174, 255, 0.7);
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 18px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      border: 1px solid rgba(120, 177, 229, 0.16);
+      outline: none;
+      border-radius: 18px;
+      background: #000;
+      color: #f4f6f8;
+      padding: 18px 22px;
+      font-family: "Inter", system-ui, sans-serif;
+      font-size: 1rem;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+    }
+
+    .contact-form textarea {
+      min-height: 190px;
+      resize: vertical;
+    }
+
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder {
+      color: #85889a;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: rgba(120, 190, 255, 0.72);
+      box-shadow:
+        0 0 0 3px rgba(74, 174, 255, 0.12),
+        inset 0 1px 0 rgba(255,255,255,0.05);
+    }
+
+    .contact-submit {
+      border: 0;
+      cursor: pointer;
+      border-radius: 22px;
+      min-height: 64px;
+      margin-top: 10px;
+      font-family: "Rajdhani", "Inter", sans-serif;
+      font-weight: 800;
+      font-size: clamp(1.2rem, 4vw, 1.8rem);
+      letter-spacing: 0.05em;
+      color: #07101c;
+      background: linear-gradient(180deg, #a8d9ff, #62b5f4);
+      box-shadow:
+        0 18px 36px rgba(74, 174, 255, 0.26),
+        0 0 38px rgba(74, 174, 255, 0.16);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .contact-submit:hover {
+      transform: translateY(-2px);
+      box-shadow:
+        0 22px 44px rgba(74, 174, 255, 0.34),
+        0 0 44px rgba(74, 174, 255, 0.22);
+    }
+
+    .contact-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      border: 1px solid rgba(159, 210, 255, 0.32);
+      background: rgba(0, 0, 0, 0.48);
+      color: #9fd2ff;
+      font-size: 1.4rem;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .contact-note {
+      margin-top: 12px;
+      color: #8296aa;
+      font-size: 0.82rem;
+      text-align: center;
+      line-height: 1.45;
+    }
+
+    @media (max-width: 620px) {
+      .contact-modal {
+        padding: 12px;
+      }
+
+      .contact-box {
+        border-radius: 26px;
+        padding: 24px 16px;
+      }
+
+      .contact-form textarea {
+        min-height: 150px;
+      }
+    }
+
   </style>
 </head>
 
@@ -483,7 +637,7 @@
         </div>
 
         <div class="cta">
-          <a class="btn btn-primary" href="mailto:info@prosolutions.com.ar" data-i18n="contact">Contact</a>
+          <a class="btn btn-primary" href="#" id="openContactModal" data-i18n="contact">Contact</a>
           <a class="btn btn-secondary" href="index.html" data-i18n="home">Home</a>
         </div>
       </section>
@@ -491,7 +645,7 @@
 
     <footer class="footer">
       <span data-i18n="footerText">Pro Solutions Industrial © 2026</span>
-      <a href="mailto:info@prosolutions.com.ar">info@prosolutions.com.ar</a>
+      <a href="#" id="openContactModal">info@prosolutions.com.ar</a>
     </footer>
   </div>
 
@@ -517,7 +671,13 @@
         s6Text: "Development of specific solutions according to the requirement, scope and technical priorities of each project.",
         contact: "Contact",
         home: "Home",
-        footerText: "Pro Solutions Industrial © 2026"
+        footerText: "Pro Solutions Industrial © 2026",
+        contactModalTitle: "Contacto",
+        contactSubmit: "Enviar mensaje",
+        contactNote: "La primera vez que se use este formulario, el correo de destino puede pedir confirmar la activación de FormSubmit.",
+        contactModalTitle: "Contact",
+        contactSubmit: "Send message",
+        contactNote: "The first time this form is used, the destination email may need to confirm FormSubmit activation."
       },
       es: {
         back: "Volver",
@@ -558,6 +718,7 @@
       langToggle.textContent = lang === "en" ? "ES" : "EN";
       langToggle.setAttribute("aria-label", lang === "en" ? "Change language to Spanish" : "Cambiar idioma a inglés");
       localStorage.setItem("prosolutions_lang", lang);
+      if (typeof updateContactPlaceholders === "function") updateContactPlaceholders(lang);
     }
 
     langToggle.addEventListener("click", () => {
@@ -567,5 +728,35 @@
 
     applyLanguage(currentLang);
   </script>
+
+
+
+  <!-- Modal de contacto -->
+  <div class="contact-modal" id="contactModal" aria-hidden="true">
+    <div class="contact-box" role="dialog" aria-modal="true" aria-labelledby="contactTitle">
+      <button class="contact-close" id="closeContactModal" type="button" aria-label="Close contact form">×</button>
+
+      <h2 class="contact-title" id="contactTitle" data-i18n="contactModalTitle">Contact</h2>
+      <div class="contact-line"></div>
+
+      <form class="contact-form" action="https://formsubmit.co/info@prosolutions.com.ar" method="POST">
+        <input type="hidden" name="_subject" value="New message from Pro Solutions website">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+
+        <input name="name" type="text" placeholder="Full name" data-placeholder-en="Full name" data-placeholder-es="Nombre completo" required>
+        <input name="email" type="email" placeholder="Email address" data-placeholder-en="Email address" data-placeholder-es="Correo electrónico" required>
+        <textarea name="message" placeholder="Message" data-placeholder-en="Message" data-placeholder-es="Mensaje" required></textarea>
+
+        <button class="contact-submit" type="submit" data-i18n="contactSubmit">Send message</button>
+      </form>
+
+      <p class="contact-note" data-i18n="contactNote">
+        The first time this form is used, the destination email may need to confirm FormSubmit activation.
+      </p>
+    </div>
+  </div>
+
+
 </body>
 </html>
