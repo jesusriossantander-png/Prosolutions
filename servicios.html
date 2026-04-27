@@ -415,17 +415,18 @@
         padding-bottom: 22px;
       }
     }
-  /* ================================
-       MODAL DE CONTACTO
+
+    /* ================================
+       MODAL DE CONTACTO - ESTILO PRO SOLUTIONS
     ================================= */
     .contact-modal {
       position: fixed;
       inset: 0;
-      z-index: 200;
+      z-index: 9999;
       display: none;
       align-items: center;
       justify-content: center;
-      padding: 22px;
+      padding: 18px;
       background: rgba(3, 7, 12, 0.78);
       backdrop-filter: blur(12px);
     }
@@ -437,39 +438,55 @@
     .contact-box {
       position: relative;
       width: min(100%, 780px);
+      max-height: calc(100vh - 34px);
+      overflow-y: auto;
       border-radius: 34px;
-      border: 1px solid rgba(27, 117, 187, 0.42);
+      border: 1px solid rgba(216, 221, 226, 0.16);
       background:
-        radial-gradient(circle at 50% 100%, rgba(27, 117, 187, 0.24), transparent 45%),
-        linear-gradient(145deg, rgba(12, 29, 46, 0.96), rgba(7, 18, 31, 0.98));
+        radial-gradient(circle at 20% 10%, rgba(244, 123, 32, 0.18), transparent 34%),
+        radial-gradient(circle at 82% 18%, rgba(27, 117, 187, 0.20), transparent 38%),
+        linear-gradient(145deg, rgba(7, 26, 51, 0.96), rgba(4, 8, 14, 0.98));
       box-shadow:
-        0 32px 90px rgba(0, 0, 0, 0.7),
-        0 0 32px rgba(27, 117, 187, 0.18),
-        inset 0 1px 0 rgba(255,255,255,0.08);
+        0 28px 80px rgba(0, 0, 0, 0.65),
+        0 0 0 1px rgba(244, 123, 32, 0.14),
+        inset 0 1px 0 rgba(255,255,255,0.12);
       padding: clamp(24px, 5vw, 46px);
     }
 
+    .contact-box::before {
+      content: "";
+      position: absolute;
+      inset: 14px;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      pointer-events: none;
+    }
+
     .contact-title {
+      position: relative;
       font-family: "Rajdhani", "Inter", sans-serif;
-      font-size: clamp(2.4rem, 7vw, 4.8rem);
+      font-size: clamp(2.35rem, 7vw, 4.5rem);
       line-height: 0.95;
       text-align: center;
-      color: #9fd2ff;
+      color: var(--naranja-logo);
       letter-spacing: 0.04em;
-      margin-bottom: 10px;
-      text-shadow: 0 0 18px rgba(76, 168, 255, 0.45);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      text-shadow: 0 0 28px rgba(244, 123, 32, 0.30);
     }
 
     .contact-line {
+      position: relative;
       width: 170px;
       height: 4px;
       margin: 0 auto 34px;
       border-radius: 999px;
-      background: linear-gradient(90deg, transparent, #4aaeff, transparent);
-      box-shadow: 0 0 16px rgba(74, 174, 255, 0.7);
+      background: linear-gradient(90deg, transparent, var(--naranja-logo), var(--rojo-fuego), transparent);
+      box-shadow: 0 0 16px rgba(244, 123, 32, 0.65);
     }
 
     .contact-form {
+      position: relative;
       display: grid;
       gap: 18px;
     }
@@ -477,11 +494,11 @@
     .contact-form input,
     .contact-form textarea {
       width: 100%;
-      border: 1px solid rgba(120, 177, 229, 0.16);
+      border: 1px solid rgba(216, 221, 226, 0.12);
       outline: none;
       border-radius: 18px;
-      background: #000;
-      color: #f4f6f8;
+      background: rgba(0, 0, 0, 0.82);
+      color: var(--gris-claro);
       padding: 18px 22px;
       font-family: "Inter", system-ui, sans-serif;
       font-size: 1rem;
@@ -489,7 +506,7 @@
     }
 
     .contact-form textarea {
-      min-height: 190px;
+      min-height: 180px;
       resize: vertical;
     }
 
@@ -500,35 +517,32 @@
 
     .contact-form input:focus,
     .contact-form textarea:focus {
-      border-color: rgba(120, 190, 255, 0.72);
+      border-color: rgba(244, 123, 32, 0.72);
       box-shadow:
-        0 0 0 3px rgba(74, 174, 255, 0.12),
+        0 0 0 3px rgba(244, 123, 32, 0.12),
         inset 0 1px 0 rgba(255,255,255,0.05);
     }
 
     .contact-submit {
       border: 0;
       cursor: pointer;
-      border-radius: 22px;
-      min-height: 64px;
+      border-radius: 999px;
+      min-height: 60px;
       margin-top: 10px;
       font-family: "Rajdhani", "Inter", sans-serif;
       font-weight: 800;
-      font-size: clamp(1.2rem, 4vw, 1.8rem);
+      font-size: clamp(1.1rem, 4vw, 1.55rem);
       letter-spacing: 0.05em;
-      color: #07101c;
-      background: linear-gradient(180deg, #a8d9ff, #62b5f4);
-      box-shadow:
-        0 18px 36px rgba(74, 174, 255, 0.26),
-        0 0 38px rgba(74, 174, 255, 0.16);
+      text-transform: uppercase;
+      color: #160b02;
+      background: linear-gradient(135deg, var(--naranja-fuego), var(--naranja-logo) 56%, var(--rojo-fuego));
+      box-shadow: 0 14px 30px rgba(244, 123, 32, 0.28);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     .contact-submit:hover {
       transform: translateY(-2px);
-      box-shadow:
-        0 22px 44px rgba(74, 174, 255, 0.34),
-        0 0 44px rgba(74, 174, 255, 0.22);
+      box-shadow: 0 18px 36px rgba(244, 123, 32, 0.36);
     }
 
     .contact-close {
@@ -538,25 +552,18 @@
       width: 42px;
       height: 42px;
       border-radius: 999px;
-      border: 1px solid rgba(159, 210, 255, 0.32);
-      background: rgba(0, 0, 0, 0.48);
-      color: #9fd2ff;
+      border: 1px solid rgba(244, 123, 32, 0.38);
+      background: rgba(5, 11, 18, 0.72);
+      color: #ffd5ad;
       font-size: 1.4rem;
       line-height: 1;
       cursor: pointer;
-    }
-
-    .contact-note {
-      margin-top: 12px;
-      color: #8296aa;
-      font-size: 0.82rem;
-      text-align: center;
-      line-height: 1.45;
+      z-index: 2;
     }
 
     @media (max-width: 620px) {
       .contact-modal {
-        padding: 12px;
+        padding: 10px;
       }
 
       .contact-box {
@@ -564,12 +571,17 @@
         padding: 24px 16px;
       }
 
+      .contact-box::before {
+        inset: 10px;
+        border-radius: 18px;
+      }
+
       .contact-form textarea {
         min-height: 150px;
       }
     }
 
-  </style>
+</style>
 </head>
 
 <body>
@@ -674,10 +686,8 @@
         footerText: "Pro Solutions Industrial © 2026",
         contactModalTitle: "Contacto",
         contactSubmit: "Enviar mensaje",
-        contactNote: "La primera vez que se use este formulario, el correo de destino puede pedir confirmar la activación de FormSubmit.",
         contactModalTitle: "Contact",
         contactSubmit: "Send message",
-        contactNote: "The first time this form is used, the destination email may need to confirm FormSubmit activation."
       },
       es: {
         back: "Volver",
@@ -719,6 +729,7 @@
       langToggle.setAttribute("aria-label", lang === "en" ? "Change language to Spanish" : "Cambiar idioma a inglés");
       localStorage.setItem("prosolutions_lang", lang);
       if (typeof updateContactPlaceholders === "function") updateContactPlaceholders(lang);
+      if (typeof refreshContactModalLanguage === "function") refreshContactModalLanguage(lang);
     }
 
     langToggle.addEventListener("click", () => {
@@ -750,16 +761,24 @@
 
         <button class="contact-submit" type="submit" data-i18n="contactSubmit">Send message</button>
       </form>
-
-      <p class="contact-note" data-i18n="contactNote">
-        The first time this form is used, the destination email may need to confirm FormSubmit activation.
-      </p>
-    </div>
+</div>
   </div>
 
 
 
   <script>
+
+    function refreshContactModalLanguage(lang) {
+      const modalTitle = document.querySelector('[data-i18n="contactModalTitle"]');
+      const modalSubmit = document.querySelector('[data-i18n="contactSubmit"]');
+      if (modalTitle && translations[lang] && translations[lang].contactModalTitle) {
+        modalTitle.textContent = translations[lang].contactModalTitle;
+      }
+      if (modalSubmit && translations[lang] && translations[lang].contactSubmit) {
+        modalSubmit.textContent = translations[lang].contactSubmit;
+      }
+    }
+
     function updateContactPlaceholders(lang) {
       document.querySelectorAll("[data-placeholder-en]").forEach(function(element) {
         var value = element.getAttribute("data-placeholder-" + lang);
@@ -776,6 +795,7 @@
       document.body.style.overflow = "hidden";
       var savedLang = localStorage.getItem("prosolutions_lang") || document.documentElement.lang || "en";
       updateContactPlaceholders(savedLang);
+      refreshContactModalLanguage(savedLang);
       return false;
     }
 
