@@ -825,5 +825,143 @@
     });
   </script>
 
+
+  <script id="prosolutions-language-master">
+    (function () {
+      const FALLBACK_TRANSLATIONS = {
+        en: {
+          status: "Website in preparation",
+          contactBtn: "Contact",
+          servicesBtn: "View services",
+          contact: "Contact",
+          home: "Home",
+          back: "Back",
+          contactModalTitle: "Contact",
+          contactSubmit: "Send message",
+          eyebrow: "Industrial services",
+          titleTop: "Our",
+          titleBottom: "Services",
+          lead: "We provide technical solutions for industrial equipment, maintenance support and repair processes focused on reliability, safety and operational continuity.",
+          s1Title: "Industrial maintenance",
+          s1Text: "Preventive and corrective support for industrial equipment, helping reduce downtime and keep production moving.",
+          s2Title: "Mechanical repairs",
+          s2Text: "Repair and evaluation of mechanical components with technical criteria, traceability and attention to detail.",
+          s3Title: "Technical solutions",
+          s3Text: "Industrial assistance adapted to each client, with practical solutions for equipment, processes and operational needs.",
+          s4Title: "Process support",
+          s4Text: "Support in inspection, documentation and control tasks to improve organization and technical follow-up.",
+          s5Title: "Industrial consulting",
+          s5Text: "Technical guidance for maintenance planning, equipment condition review and improvement opportunities.",
+          s6Title: "Custom projects",
+          s6Text: "Development of specific solutions according to the requirement, scope and technical priorities of each project.",
+          footerText: "Pro Solutions Industrial © 2026"
+        },
+        es: {
+          status: "Sitio web en preparación",
+          contactBtn: "Contactar",
+          servicesBtn: "Ver servicios",
+          contact: "Contacto",
+          home: "Inicio",
+          back: "Volver",
+          contactModalTitle: "Contacto",
+          contactSubmit: "Enviar mensaje",
+          eyebrow: "Servicios industriales",
+          titleTop: "Nuestros",
+          titleBottom: "Servicios",
+          lead: "Brindamos soluciones técnicas para equipos industriales, soporte de mantenimiento y procesos de reparación orientados a confiabilidad, seguridad y continuidad operativa.",
+          s1Title: "Mantenimiento industrial",
+          s1Text: "Soporte preventivo y correctivo para equipos industriales, ayudando a reducir paradas y mantener la producción en marcha.",
+          s2Title: "Reparaciones mecánicas",
+          s2Text: "Reparación y evaluación de componentes mecánicos con criterio técnico, trazabilidad y atención al detalle.",
+          s3Title: "Soluciones técnicas",
+          s3Text: "Asistencia industrial adaptada a cada cliente, con soluciones prácticas para equipos, procesos y necesidades operativas.",
+          s4Title: "Soporte de procesos",
+          s4Text: "Apoyo en tareas de inspección, documentación y control para mejorar la organización y el seguimiento técnico.",
+          s5Title: "Consultoría industrial",
+          s5Text: "Orientación técnica para planificación de mantenimiento, revisión de estado de equipos y oportunidades de mejora.",
+          s6Title: "Proyectos a medida",
+          s6Text: "Desarrollo de soluciones específicas según el requerimiento, alcance y prioridades técnicas de cada proyecto.",
+          footerText: "Pro Solutions Industrial © 2026"
+        }
+      };
+
+      function getTranslations(lang) {
+        const existing = (typeof window.translations !== "undefined" && window.translations && window.translations[lang])
+          ? window.translations[lang]
+          : {};
+        return Object.assign({}, FALLBACK_TRANSLATIONS[lang], existing);
+      }
+
+      window.setProSolutionsLanguage = function (lang) {
+        lang = lang === "es" ? "es" : "en";
+        localStorage.setItem("prosolutions_lang", lang);
+        document.documentElement.lang = lang;
+
+        const dict = getTranslations(lang);
+
+        document.querySelectorAll("[data-i18n]").forEach(function (element) {
+          const key = element.getAttribute("data-i18n");
+          if (dict[key] !== undefined) element.textContent = dict[key];
+        });
+
+        document.querySelectorAll("[data-placeholder-en]").forEach(function (element) {
+          const value = element.getAttribute("data-placeholder-" + lang);
+          if (value) element.setAttribute("placeholder", value);
+        });
+
+        document.querySelectorAll("#langToggle, .lang-toggle").forEach(function (button) {
+          button.textContent = lang === "en" ? "ES" : "EN";
+          button.setAttribute("aria-label", lang === "en" ? "Change language to Spanish" : "Cambiar idioma a inglés");
+        });
+      };
+
+      window.openContactForm = function (event) {
+        if (event) event.preventDefault();
+        const modal = document.getElementById("contactModal");
+        if (!modal) return false;
+
+        const lang = localStorage.getItem("prosolutions_lang") || "en";
+        window.setProSolutionsLanguage(lang);
+
+        modal.classList.add("is-open");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+        return false;
+      };
+
+      window.closeContactForm = function () {
+        const modal = document.getElementById("contactModal");
+        if (!modal) return;
+        modal.classList.remove("is-open");
+        modal.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+      };
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const savedLang = localStorage.getItem("prosolutions_lang") || "en";
+        window.setProSolutionsLanguage(savedLang);
+
+        document.querySelectorAll("#langToggle, .lang-toggle").forEach(function (button) {
+          button.onclick = function () {
+            const current = localStorage.getItem("prosolutions_lang") || "en";
+            window.setProSolutionsLanguage(current === "en" ? "es" : "en");
+          };
+        });
+
+        document.addEventListener("click", function (event) {
+          const modal = document.getElementById("contactModal");
+          if (modal && event.target === modal) window.closeContactForm();
+        });
+
+        document.addEventListener("keydown", function (event) {
+          const modal = document.getElementById("contactModal");
+          if (event.key === "Escape" && modal && modal.classList.contains("is-open")) {
+            window.closeContactForm();
+          }
+        });
+      });
+    })();
+  </script>
+
 </body>
 </html>
