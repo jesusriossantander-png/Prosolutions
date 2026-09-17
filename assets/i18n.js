@@ -171,6 +171,23 @@
     }
   };
 
+  /* ---------- eventos para Google Analytics ---------- */
+
+  function track(name, params) {
+    if (typeof window.gtag !== "function") return;
+    window.gtag("event", name, params || {});
+  }
+
+  function contactSource(el) {
+    if (!el) return "otro";
+    if (el.closest(".rail")) return "riel";
+    if (el.closest(".hcard--hero")) return "badge_hero";
+    if (el.closest(".hcard--service")) return "tarjeta_servicio";
+    if (el.closest(".plate")) return "hero";
+    if (el.closest(".cta")) return "cta_final";
+    return "otro";
+  }
+
   function storageGet() {
     try { return localStorage.getItem(STORAGE_KEY); } catch (e) { return null; }
   }
@@ -323,6 +340,7 @@
       chip.addEventListener("click", function () {
         var v = chip.getAttribute("data-filter");
         applyFilter(v);
+        track("regime_filter", { regime: v });
         var url = new URL(window.location.href);
         if (v === "all") url.searchParams.delete("regimen"); else url.searchParams.set("regimen", v);
         window.history.replaceState({}, document.title, url.pathname + url.search);
@@ -359,7 +377,11 @@
     setLang(currentLang());
 
     document.querySelectorAll("[data-lang]").forEach(function (btn) {
-      btn.addEventListener("click", function () { setLang(btn.getAttribute("data-lang")); });
+      btn.addEventListener("click", function () {
+        var lang = btn.getAttribute("data-lang");
+        setLang(lang);
+        track("language_change", { lang: lang });
+      });
     });
 
     document.querySelectorAll("[data-open-contact]").forEach(function (el) {
@@ -367,6 +389,8 @@
         event.preventDefault();
         var prefillKey = el.getAttribute("data-open-contact");
         openContact(prefillKey ? t(prefillKey) : "");
+        track("contact_open", { source: contactSource(el), page: location.pathname });
+        if (prefillKey) track("service_ask", { service: t(prefillKey, "es") });
       });
     });
     document.querySelectorAll("[data-close-contact]").forEach(function (el) {
@@ -384,7 +408,10 @@
 
     setReturnUrls();
     document.querySelectorAll("form.form").forEach(function (form) {
-      form.addEventListener("submit", setReturnUrls);
+      form.addEventListener("submit", function () {
+        setReturnUrls();
+        track("generate_lead", { method: "formulario", page: location.pathname });
+      });
     });
     showToastIfSent();
     initFilter();
