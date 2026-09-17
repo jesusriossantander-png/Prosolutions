@@ -322,6 +322,29 @@
     });
   }
 
+  /* ---------- badge del hero al tacto (pantallas sin hover) ---------- */
+
+  function initTouchBadge() {
+    var card = document.querySelector(".hcard--hero");
+    if (!card || !window.matchMedia("(hover: none)").matches) return;
+    card.setAttribute("role", "button");
+    card.setAttribute("aria-expanded", "false");
+    function setOpen(open) {
+      card.classList.toggle("is-active", open);
+      card.setAttribute("aria-expanded", open ? "true" : "false");
+    }
+    card.addEventListener("click", function (event) {
+      if (event.target.closest("button, a")) return; // el botón Contactar hace lo suyo
+      setOpen(!card.classList.contains("is-active"));
+    });
+    card.addEventListener("keydown", function (event) {
+      if (event.key === "Enter" || event.key === " ") { event.preventDefault(); setOpen(!card.classList.contains("is-active")); }
+    });
+    document.addEventListener("click", function (event) {
+      if (!card.contains(event.target)) setOpen(false);
+    });
+  }
+
   /* ---------- arranque ---------- */
 
   document.addEventListener("DOMContentLoaded", function () {
@@ -357,6 +380,7 @@
     });
     showToastIfSent();
     initFilter();
+    initTouchBadge();
   });
 
   window.ProSolutions = { setLang: setLang, t: t, openContact: openContact, closeContact: closeContact };

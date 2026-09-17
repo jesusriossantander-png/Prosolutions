@@ -330,23 +330,23 @@ button { font: inherit; color: inherit; }
 }
 .hcard__link:hover { color: #ffd1b3; }
 
-.hcard:hover, .hcard:focus-within {
+.hcard:hover, .hcard:focus-within, .hcard.is-active {
   border-color: var(--flame);
   box-shadow: 0 0 0 1px var(--flame), 0 0 36px 4px var(--flame-glow);
 }
-.hcard:hover .hcard__circle::before, .hcard:focus-within .hcard__circle::before {
+.hcard:hover .hcard__circle::before, .hcard:focus-within .hcard__circle::before, .hcard.is-active .hcard__circle::before {
   width: 100%;
   height: 100%;
   border-radius: var(--radius);
   box-shadow: 0 0 0 0 var(--flame), 0 0 0 0 var(--flame-glow);
   transition-delay: 0.35s;
 }
-.hcard:hover .hcard__badge, .hcard:focus-within .hcard__badge {
+.hcard:hover .hcard__badge, .hcard:focus-within .hcard__badge, .hcard.is-active .hcard__badge {
   transform: scale(0);
   opacity: 0;
   transition-delay: 0s;
 }
-.hcard:hover .hcard__content, .hcard:focus-within .hcard__content {
+.hcard:hover .hcard__content, .hcard:focus-within .hcard__content, .hcard.is-active .hcard__content {
   opacity: 1;
   transform: none;
   transition-delay: 0.8s;
@@ -374,7 +374,7 @@ button { font: inherit; color: inherit; }
   color: var(--stencil);
   transition: opacity 0.3s 0.3s;
 }
-.hcard:hover .hcard__idle, .hcard:focus-within .hcard__idle { opacity: 0; transition-delay: 0s; }
+.hcard:hover .hcard__idle, .hcard:focus-within .hcard__idle, .hcard.is-active .hcard__idle { opacity: 0; transition-delay: 0s; }
 
 /* en pantallas sin hover el contenido de las tarjetas de servicio se ve siempre;
    el badge queda arriba, con su halo, y no hay expansión */
@@ -391,10 +391,13 @@ button { font: inherit; color: inherit; }
   .hcard--service .hcard__link { color: var(--stencil); }
   .hcard--service:hover .hcard__circle::before, .hcard--service:focus-within .hcard__circle::before { width: 84px; height: 84px; border-radius: 50%; box-shadow: 0 0 0 3px var(--flame), 0 0 32px 6px var(--flame-glow); }
   .hcard--service:hover .hcard__badge, .hcard--service:focus-within .hcard__badge { transform: none; opacity: 1; }
-  .hcard--hero .hcard__content { display: none; }
-  .hcard--hero:hover .hcard__circle::before, .hcard--hero:focus-within .hcard__circle::before { width: var(--badge); height: var(--badge); border-radius: 50%; box-shadow: 0 0 0 3px var(--flame), 0 0 32px 6px var(--flame-glow); }
-  .hcard--hero:hover .hcard__badge, .hcard--hero:focus-within .hcard__badge { transform: none; opacity: 1; }
-  .hcard:hover, .hcard:focus-within { box-shadow: none; border-color: var(--steel-700); }
+  .hcard--hero { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+  .hcard--hero:not(.is-active):hover .hcard__circle::before, .hcard--hero:not(.is-active):focus-within .hcard__circle::before { width: var(--badge); height: var(--badge); border-radius: 50%; box-shadow: 0 0 0 3px var(--flame), 0 0 32px 6px var(--flame-glow); }
+  .hcard--hero:not(.is-active):hover .hcard__badge, .hcard--hero:not(.is-active):focus-within .hcard__badge { transform: none; opacity: 1; }
+  .hcard--hero:not(.is-active):hover .hcard__content, .hcard--hero:not(.is-active):focus-within .hcard__content { opacity: 0; transform: translateY(12px); pointer-events: none; }
+  .hcard:not(.is-active):hover, .hcard:not(.is-active):focus-within { box-shadow: none; border-color: var(--steel-700); }
+  .hcard--hero.is-active .hcard__circle::before { transition-delay: 0s; }
+  .hcard--hero.is-active .hcard__content { transition-delay: 0.45s; }
 }
 
 /* ---------- franja de regímenes (index) ---------- */
