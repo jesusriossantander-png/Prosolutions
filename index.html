@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Pro Solutions Industrial — Mantenimiento y reparaciones industriales</title>
+  <meta name="description" content="Mantenimiento industrial, reparaciones mecánicas y soporte técnico para equipos y procesos. Pro Solutions Industrial." />
+  <meta name="theme-color" content="#101418" />
+  <link rel="icon" href="assets/logo-mark.png" type="image/png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/prosolutions.css" />
+</head>
+<body data-title-key="titleHome" data-meta-key="metaHome">
+  <div class="page">
+
+    <header class="rail">
+      <a class="brand" href="index.html" aria-label="Pro Solutions Industrial">
+        <img class="brand__mark" src="assets/logo-mark.png" alt="" />
+        <span class="brand__name">Pro <span>Solutions</span> Industrial</span>
+      </a>
+      <nav class="nav" aria-label="Principal">
+        <a class="nav__link nav__link--text" href="servicios.html" data-i18n="navServices">Servicios</a>
+        <button class="nav__link" type="button" data-open-contact data-i18n="navContact">Contactar</button>
+        <div class="lang" role="group" aria-label="Idioma / Language">
+          <button class="lang__btn" type="button" data-lang="es" aria-pressed="true" data-i18n-aria="langToEs" aria-label="Ver el sitio en español">ES</button>
+          <button class="lang__btn" type="button" data-lang="en" aria-pressed="false" data-i18n-aria="langToEn" aria-label="Ver el sitio en inglés">EN</button>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="heroTitle">
+        <div class="plate">
+          <span class="plate__rivet" aria-hidden="true"></span>
+
+          <div>
+            <p class="eyebrow rise" style="--i:0" data-i18n="heroEyebrow">Mantenimiento · Reparación · Ingeniería</p>
+            <h1 class="headline rise" id="heroTitle" style="--i:1"><span data-i18n="heroTitle">Mantenemos tu planta en marcha</span><span class="headline__spark" aria-hidden="true"></span></h1>
+            <p class="lead rise" style="--i:2" data-i18n="heroLead">Mantenimiento, reparaciones mecánicas y soporte técnico para equipos y procesos industriales, con criterio técnico y trazabilidad.</p>
+
+            <dl class="spec rise" style="--i:3">
+              <div class="spec__row">
+                <dt class="spec__key" data-i18n="specRegime">Régimen</dt>
+                <dd class="spec__val" data-i18n="specRegimeVal">Programado · Correctivo · A demanda · Por proyecto</dd>
+              </div>
+              <div class="spec__row">
+                <dt class="spec__key" data-i18n="specScope">Alcance</dt>
+                <dd class="spec__val" data-i18n="specScopeVal">Equipos, componentes y procesos industriales</dd>
+              </div>
+              <div class="spec__row">
+                <dt class="spec__key" data-i18n="specContact">Contacto</dt>
+                <dd class="spec__val"><a href="mailto:info@prosolutions.com.ar">info@prosolutions.com.ar</a></dd>
+              </div>
+            </dl>
+
+            <div class="actions rise" style="--i:4">
+              <button class="btn btn--primary" type="button" data-open-contact data-i18n="ctaContact">Contactar</button>
+              <a class="btn btn--ghost" href="servicios.html" data-i18n="ctaServices">Ver servicios</a>
+            </div>
+          </div>
+
+          <div class="hcard hcard--hero rise" style="--i:2" tabindex="0">
+            <div class="hcard__circle">
+              <img class="hcard__badge" src="assets/logo-mark.png" alt="Isotipo de Pro Solutions Industrial: engranaje con llama" data-i18n-alt="badgeAlt" width="424" height="424" />
+            </div>
+            <div class="hcard__content">
+              <span class="hcard__tag" data-i18n="badgeTag">Industria · Servicio · Precisión</span>
+              <h2 class="hcard__title" data-i18n="badgeTitle">Pro Solutions Industrial</h2>
+              <p class="hcard__text" data-i18n="badgeText">Soporte técnico para que los equipos sigan produciendo.</p>
+              <button class="hcard__link" type="button" data-open-contact data-i18n="ctaContact">Contactar</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="regimes" aria-labelledby="regimesTitle">
+        <div class="regimes__head">
+          <h2 class="section-title" id="regimesTitle" data-i18n="regimesTitle">Cómo trabajamos</h2>
+          <p class="eyebrow" style="margin:0" data-i18n="regimesHint">Cada servicio tiene un régimen. Elegí el tuyo.</p>
+        </div>
+        <div class="regimes__grid">
+          <a class="regime" href="servicios.html?regimen=programado">
+            <span class="regime__tag" data-i18n="regimeProgramado">Programado</span>
+            <p class="regime__text" data-i18n="regimeProgramadoText">Preventivo con calendario. Menos paradas imprevistas.</p>
+            <span class="regime__more" data-i18n="regimeMore">Ver servicios →</span>
+          </a>
+          <a class="regime" href="servicios.html?regimen=correctivo">
+            <span class="regime__tag" data-i18n="regimeCorrectivo">Correctivo</span>
+            <p class="regime__text" data-i18n="regimeCorrectivoText">Cuando algo falla. Diagnóstico y reparación.</p>
+            <span class="regime__more" data-i18n="regimeMore">Ver servicios →</span>
+          </a>
+          <a class="regime" href="servicios.html?regimen=demanda">
+            <span class="regime__tag" data-i18n="regimeDemanda">A demanda</span>
+            <p class="regime__text" data-i18n="regimeDemandaText">Asistencia y consultoría según la necesidad.</p>
+            <span class="regime__more" data-i18n="regimeMore">Ver servicios →</span>
+          </a>
+          <a class="regime" href="servicios.html?regimen=proyecto">
+            <span class="regime__tag" data-i18n="regimeProyecto">Por proyecto</span>
+            <p class="regime__text" data-i18n="regimeProyectoText">Soluciones a medida con alcance definido.</p>
+            <span class="regime__more" data-i18n="regimeMore">Ver servicios →</span>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span data-i18n="footerCopy">© 2026 Pro Solutions Industrial</span>
+      <a href="mailto:info@prosolutions.com.ar">info@prosolutions.com.ar</a>
+    </footer>
+  </div>
+
+  <div class="modal" id="contactModal" aria-hidden="true">
+    <div class="modal__box" role="dialog" aria-modal="true" aria-labelledby="contactTitle">
+      <button class="modal__close" type="button" data-close-contact aria-label="Cerrar" data-i18n-aria="modalClose">×</button>
+      <h2 class="modal__title" id="contactTitle" data-i18n="modalTitle">Contacto</h2>
+      <p class="modal__hint" data-i18n="modalHint">Respondemos por correo. Contanos el equipo, el problema o el alcance.</p>
+
+      <form class="form" action="https://formsubmit.co/info@prosolutions.com.ar" method="POST">
+        <input type="hidden" name="_subject" value="Nuevo mensaje desde el sitio Pro Solutions" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_next" value="" />
+
+        <div class="field">
+          <label class="field__label" for="fName" data-i18n="fieldName">Nombre completo</label>
+          <input class="field__input" id="fName" name="name" type="text" autocomplete="name" placeholder="Nombre y apellido" data-i18n-ph="phName" required />
+        </div>
+        <div class="field">
+          <label class="field__label" for="fEmail" data-i18n="fieldEmail">Correo electrónico</label>
+          <input class="field__input" id="fEmail" name="email" type="email" autocomplete="email" placeholder="nombre@empresa.com" data-i18n-ph="phEmail" required />
+        </div>
+        <div class="field">
+          <label class="field__label" for="fMessage" data-i18n="fieldMessage">Mensaje</label>
+          <textarea class="field__input" id="fMessage" name="message" placeholder="Equipo, falla o servicio que necesitás" data-i18n-ph="phMessage" required></textarea>
+        </div>
+
+        <button class="btn btn--primary" type="submit" data-i18n="submit">Enviar mensaje</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast" id="sentToast" role="status" aria-live="polite" data-i18n="toastSent">Mensaje enviado</div>
+
+  <script src="assets/i18n.js"></script>
+</body>
+</html>
