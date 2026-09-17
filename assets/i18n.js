@@ -8,9 +8,9 @@
 
   var DICT = {
     es: {
-      titleHome: "Pro Solutions Industrial — Mantenimiento y reparaciones industriales",
+      titleHome: "Mantenimiento y reparación de maquinaria industrial en Mendoza | Pro Solutions Industrial",
       titleServices: "Servicios | Pro Solutions Industrial",
-      metaHome: "Mantenimiento industrial, reparaciones mecánicas y soporte técnico para equipos y procesos. Pro Solutions Industrial.",
+      metaHome: "Empresa de mantenimiento industrial en Mendoza, Argentina. Reparación de maquinaria, servicio técnico industrial y soporte de procesos, en todo el país y el exterior.",
       metaServices: "Catálogo de servicios de Pro Solutions Industrial: mantenimiento programado, reparaciones correctivas, soporte a demanda y proyectos a medida.",
 
       navServices: "Servicios",
@@ -18,13 +18,17 @@
       langToEs: "Ver el sitio en español",
       langToEn: "Ver el sitio en inglés",
 
-      heroEyebrow: "Mantenimiento · Reparación · Ingeniería",
-      heroTitle: "Mantenemos tu planta en marcha",
+      heroEyebrow: "Mendoza, Argentina · Servicio en todo el país y el exterior",
+      heroTitle: "Mantenimiento y reparación de maquinaria industrial",
       heroLead: "Mantenimiento, reparaciones mecánicas y soporte técnico para equipos y procesos industriales, con criterio técnico y trazabilidad.",
       specRegime: "Régimen",
       specRegimeVal: "Programado · Correctivo · A demanda · Por proyecto",
       specScope: "Alcance",
       specScopeVal: "Equipos, componentes y procesos industriales",
+      specBase: "Base",
+      specBaseVal: "Mendoza, Argentina",
+      specCoverage: "Cobertura",
+      specCoverageVal: "Argentina y el exterior",
       specContact: "Contacto",
       ctaContact: "Contactar",
       ctaServices: "Ver servicios",
@@ -69,7 +73,7 @@
 
       ctaBandText: "¿Tenés un equipo parado o un mantenimiento por planificar? Contanos qué necesitás.",
 
-      footerCopy: "© 2026 Pro Solutions Industrial",
+      footerCopy: "© 2026 Pro Solutions Industrial · Mendoza, Argentina",
 
       modalTitle: "Contacto",
       modalHint: "Respondemos por correo. Contanos el equipo, el problema o el alcance.",
@@ -85,9 +89,9 @@
       toastSent: "Mensaje enviado"
     },
     en: {
-      titleHome: "Pro Solutions Industrial — Industrial maintenance and repairs",
+      titleHome: "Industrial machinery maintenance and repair in Mendoza, Argentina | Pro Solutions Industrial",
       titleServices: "Services | Pro Solutions Industrial",
-      metaHome: "Industrial maintenance, mechanical repairs and technical support for equipment and processes. Pro Solutions Industrial.",
+      metaHome: "Industrial maintenance company based in Mendoza, Argentina. Machinery repair, industrial technical service and process support, across Argentina and abroad.",
       metaServices: "Pro Solutions Industrial service catalogue: scheduled maintenance, corrective repairs, on-demand support and custom projects.",
 
       navServices: "Services",
@@ -95,13 +99,17 @@
       langToEs: "View the site in Spanish",
       langToEn: "View the site in English",
 
-      heroEyebrow: "Maintenance · Repair · Engineering",
-      heroTitle: "We keep your plant running",
+      heroEyebrow: "Mendoza, Argentina · Serving Argentina and abroad",
+      heroTitle: "Industrial machinery maintenance and repair",
       heroLead: "Maintenance, mechanical repairs and technical support for industrial equipment and processes, with sound engineering judgement and traceability.",
       specRegime: "Regime",
       specRegimeVal: "Scheduled · Corrective · On demand · Per project",
       specScope: "Scope",
       specScopeVal: "Industrial equipment, components and processes",
+      specBase: "Based in",
+      specBaseVal: "Mendoza, Argentina",
+      specCoverage: "Coverage",
+      specCoverageVal: "Argentina and abroad",
       specContact: "Contact",
       ctaContact: "Contact us",
       ctaServices: "See services",
@@ -146,7 +154,7 @@
 
       ctaBandText: "Have a machine down or maintenance to plan? Tell us what you need.",
 
-      footerCopy: "© 2026 Pro Solutions Industrial",
+      footerCopy: "© 2026 Pro Solutions Industrial · Mendoza, Argentina",
 
       modalTitle: "Contact",
       modalHint: "We reply by email. Tell us the equipment, the problem or the scope.",
